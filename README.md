@@ -34,12 +34,10 @@ A modern, responsive, and SEO-optimized landing page built for technical real es
 │   ├── globals.css
 │   ├── layout.tsx
 │   ├── page.tsx
-│   ├── robots.ts
 │   └── sitemap.ts
 ├── components/
 │   ├── Navbar.tsx
 │   ├── HeroSection.tsx
-│   ├── AnatomySection.tsx
 │   ├── PricingSection.tsx
 │   ├── ContactSection.tsx
 │   └── Footer.tsx
