@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function AnatomySection() {
   return (
-    <section className="w-full bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="w-full bg-gray-50 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden" id='Service'>
       <div className="max-w-6xl mx-auto text-center mb-12">
         {/* Título e Subtítulo */}
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-4">
+        <h2 className="text-3xl sm:text-4xl font-extrabold uppercase text-gray-900 tracking-tight mb-4">
           Anatomia de um Laudo Técnico de Alta Precisão
         </h2>
         <p className="text-gray-600 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
@@ -175,15 +175,7 @@ export default function AnatomySection() {
             <div>
               <p className="font-bold text-gray-900 text-[10px]">Visualizar a eficiência e a profundidade que oferecemos.</p>
             </div>
-            <div className="text-center">
-              {/* Assinatura em Script/Manuscrito */}
-              <div className="font-serif italic text-lg text-gray-800 -mb-1 font-bold">
-                Roberto Santos
-              </div>
-              <div className="w-32 h-[1px] bg-gray-400 my-1 mx-auto"></div>
-              <p className="font-bold text-gray-900 text-[9px]">Engenheiro Civil - CREA/RJ 123456</p>
-              <p className="text-[8px] text-gray-500">Responsável Técnico pela Vistoria</p>
-            </div>
+           
           </div>
 
           {/* Número de página */}
@@ -229,29 +221,7 @@ export default function AnatomySection() {
 
       </div>
 
-      {/* ================= RODAPÉ / TRÊS PILARES ================= */}
-      <div className="max-w-4xl mx-auto mt-16 pt-8 border-t border-gray-200 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <div className="flex items-center justify-center gap-3">
-          <span className="text-3xl">📜</span>
-          <span className="font-bold text-gray-900 text-sm sm:text-base text-left">
-            Rigor Normativo<br /><span className="text-emerald-700">ABNT</span>
-          </span>
-        </div>
-
-        <div className="flex items-center justify-center gap-3">
-          <span className="text-3xl">🏅</span>
-          <span className="font-bold text-gray-900 text-sm sm:text-base text-left">
-            Profissionais<br /><span className="text-emerald-700">Credenciados</span>
-          </span>
-        </div>
-
-        <div className="flex items-center justify-center gap-3">
-          <span className="text-3xl">⏱️</span>
-          <span className="font-bold text-gray-900 text-sm sm:text-base text-left">
-            Relatório Express<br /><span className="text-emerald-700">(até 24h)</span>
-          </span>
-        </div>
-      </div>
+    
     </section>
   );
 }
