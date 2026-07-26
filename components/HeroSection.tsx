@@ -1,7 +1,11 @@
-import Image from 'next/image';
+'use client'
+
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function HeroSection() {
+  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
+
   return (
     <section className="w-full bg-white pt-12 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
@@ -31,12 +35,13 @@ export default function HeroSection() {
           >
             Solicitar Orçamento / Agendar Vistoria
           </Link>
-          <Link
-            href="#exemplo"
-            className="bg-white hover:bg-gray-50 text-gray-800 font-medium px-8 py-3.5 rounded-lg border border-gray-300 transition-colors text-sm sm:text-base"
+         <button
+            type="button"
+            onClick={() => setIsPdfModalOpen(true)}
+            className="bg-white hover:bg-gray-50 text-gray-800 font-medium px-8 py-3.5 rounded-lg border border-gray-300 transition-colors text-sm sm:text-base cursor-pointer"
           >
             Ver Exemplo de Laudo Técnico (PDF)
-          </Link>
+          </button>
         </div>
 
         {/* Grid de Cards Prova Social / Imagem */}

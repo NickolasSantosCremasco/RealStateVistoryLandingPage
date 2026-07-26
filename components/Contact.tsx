@@ -138,7 +138,7 @@ export default function ContactSection() {
             
             {/* CTA WhatsApp */}
             <a
-              href="https://wa.me/5511987654321"
+              href="https://wa.me/5511997069616"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-between bg-emerald-950/40 border-2 border-emerald-500/80 p-4 rounded-xl hover:bg-emerald-900/30 transition-colors group"
