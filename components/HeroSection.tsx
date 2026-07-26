@@ -9,7 +9,7 @@ export default function HeroSection() {
         {/* Badge Credenciados */}
         <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 text-gray-700 px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-8">
           <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          Vistoriadores Credenciados CREA/IBAPE
+          Vistoriadores Credenciados
         </div>
 
         {/* Título Principal */}

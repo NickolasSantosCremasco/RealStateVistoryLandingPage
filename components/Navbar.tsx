@@ -14,7 +14,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="shrink-0">
             <Link href="/" className="text-xl font-bold text-gray-900 tracking-tight">
-              <img src="/img/logo.jpeg" alt="" className='w-30' />
+              <img src="/img/logo.png" alt="" className='w-30' />
             </Link>
           </div>
 
