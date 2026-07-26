@@ -144,7 +144,7 @@ export default function ContactSection() {
               className="flex items-center justify-between bg-emerald-950/40 border-2 border-emerald-500/80 p-4 rounded-xl hover:bg-emerald-900/30 transition-colors group"
             >
               <div className="flex items-center gap-3">
-                <div className="bg-emerald-500 text-white p-2.5 rounded-full text-2xl flex-shrink-0">
+                <div className="bg-emerald-500 text-white p-2.5 rounded-full text-2xl shrink-0">
                   💬
                 </div>
                 <div>
@@ -165,42 +165,33 @@ export default function ContactSection() {
               </h3>
 
               <div className="flex items-start gap-2.5">
-                <span className="text-base flex-shrink-0">📍</span>
+                <span className="text-base shrink-0">📍</span>
                 <p>
                   <strong className="text-gray-900">Região:</strong> Atendemos Capital e Região Metropolitana de São Paulo.
                 </p>
               </div>
 
               <div className="flex items-start gap-2.5">
-                <span className="text-base flex-shrink-0">⏰</span>
+                <span className="text-base shrink-0">⏰</span>
                 <p>
                   <strong className="text-gray-900">Horário:</strong> Segunda a Sábado, das 08h às 19h.
                 </p>
               </div>
 
               <div className="flex items-start gap-2.5">
-                <span className="text-base flex-shrink-0">✉️</span>
+                <span className="text-base shrink-0">✉️</span>
                 <p>
-                  <strong className="text-gray-900">E-mail:</strong> contato@vistoriapro.com.br
+                  <strong className="text-gray-900">E-mail:</strong> douglasgc@ymail.com
                 </p>
               </div>
 
               <div className="flex items-start gap-2.5">
-                <span className="text-base flex-shrink-0">📞</span>
+                <span className="text-base shrink-0">📞</span>
                 <p>
-                  <strong className="text-gray-900">Telefone:</strong> (11) 98765-4321
+                  <strong className="text-gray-900">Telefone:</strong> (11) 99706-9616
                 </p>
               </div>
             </div>
-
-            {/* Selo Garantia Técnica */}
-            <div className="bg-white text-gray-800 p-4 rounded-xl shadow-md flex items-center gap-3 border-l-4 border-emerald-600">
-              <span className="text-xl text-emerald-600 font-bold">🛡️</span>
-              <p className="text-xs font-semibold text-gray-700">
-                Laudos com assinatura técnica de engenheiro
-              </p>
-            </div>
-
           </div>
 
         </div>

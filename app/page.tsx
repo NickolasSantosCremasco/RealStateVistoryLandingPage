@@ -1,5 +1,4 @@
 import ContactSection from "@/components/Contact";
-
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import PricingSection from "@/components/Princing";

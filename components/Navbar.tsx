@@ -12,9 +12,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link href="/" className="text-xl font-bold text-gray-900 tracking-tight">
-              [LOGO]
+              <img src="/img/logo.jpeg" alt="" className='w-30' />
             </Link>
           </div>
 
