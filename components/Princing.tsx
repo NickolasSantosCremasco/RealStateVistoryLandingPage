@@ -158,7 +158,7 @@ export default function PricingSection() {
 
                 {/* Botão de Ação */}
                 <a
-                  href="#agendar"
+                  href="https://wa.me/5511997069616"
                   className={`w-full py-3 px-4 rounded-xl font-bold text-sm text-center transition-colors block ${
                     plan.isPopular
                       ? 'bg-emerald-400 hover:bg-emerald-300 text-[#024a59] shadow-md'

@@ -30,7 +30,7 @@ export default function HeroSection() {
         {/* Botões de Ação */}
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-16">
           <a
-            href="https://wa.me/5511997069616?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20vistoria."
+            href="https://wa.me/5511997069616"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#024a59] hover:bg-[#013540] text-white font-medium px-8 py-3.5 rounded-lg transition-colors text-sm sm:text-base shadow-sm text-center"
