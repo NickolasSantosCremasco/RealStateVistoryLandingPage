@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Link from 'next/link';
 import { useState } from 'react';
@@ -29,13 +29,15 @@ export default function HeroSection() {
 
         {/* Botões de Ação */}
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-16">
-          <Link
-            href="#agendar"
-            className="bg-[#024a59] hover:bg-[#013540] text-white font-medium px-8 py-3.5 rounded-lg transition-colors text-sm sm:text-base shadow-sm"
+          <a
+            href="https://wa.me/5511997069616?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20vistoria."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#024a59] hover:bg-[#013540] text-white font-medium px-8 py-3.5 rounded-lg transition-colors text-sm sm:text-base shadow-sm text-center"
           >
             Solicitar Orçamento / Agendar Vistoria
-          </Link>
-         <button
+          </a>
+          <button
             type="button"
             onClick={() => setIsPdfModalOpen(true)}
             className="bg-white hover:bg-gray-50 text-gray-800 font-medium px-8 py-3.5 rounded-lg border border-gray-300 transition-colors text-sm sm:text-base cursor-pointer"
@@ -69,13 +71,11 @@ export default function HeroSection() {
 
           {/* Card 2: Imagem do Imóvel com Pin */}
           <div className="relative rounded-2xl overflow-hidden min-h-[220px] bg-gray-200 shadow-sm group">
-            {/* Imagem de fundo */}
             <img
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
               alt="Ambiente vistoriado"
               className="w-full h-full object-cover object-center"
             />
-            {/* Tag / Pin flutuante */}
             <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-md shadow-md text-xs font-semibold text-gray-800 flex items-center gap-1.5 border border-gray-100">
               <span className="text-red-500">📍</span>
               <span>Vedações: OK</span>
@@ -85,7 +85,6 @@ export default function HeroSection() {
           {/* Card 3: Avaliações e Depoimento */}
           <div className="bg-gray-50/50 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between">
             <div>
-              {/* Avatares */}
               <div className="flex -space-x-2 overflow-hidden mb-4">
                 <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Cliente" />
                 <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Cliente" />
@@ -93,7 +92,6 @@ export default function HeroSection() {
                 <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Cliente" />
               </div>
               
-              {/* Nota */}
               <div className="flex items-center gap-1.5 mb-2">
                 <span className="text-yellow-400 text-lg">★</span>
                 <span className="font-bold text-gray-900 text-base">4.9/5</span>
@@ -101,7 +99,6 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Quote */}
             <p className="text-xs text-gray-600 italic border-t border-gray-100 pt-3 mt-auto">
               "Serviço excelente, laudo bem detalhado e me forneceu uma proteção jurídica"
             </p>
@@ -110,6 +107,64 @@ export default function HeroSection() {
         </div>
 
       </div>
+
+      {/* ================= ESTRUTURA DO MODAL (ESTAVA FALTANDO) ================= */}
+      {isPdfModalOpen && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn"
+          onClick={() => setIsPdfModalOpen(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative text-left border border-gray-100 transform transition-all"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Botão Fechar (X) */}
+            <button
+              onClick={() => setIsPdfModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors text-lg font-bold"
+              aria-label="Fechar modal"
+            >
+              ✕
+            </button>
+
+            {/* Cabeçalho */}
+            <div className="mb-4 pr-6">
+              <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider bg-emerald-50 px-2.5 py-1 rounded-md inline-block mb-2">
+                Demonstração
+              </span>
+              <h3 className="text-xl font-bold text-gray-900">
+                Laudo Técnico Pericial de Vistoria
+              </h3>
+            </div>
+
+            {/* Card Preview do PDF */}
+            <div className="relative rounded-xl overflow-hidden border border-gray-200 bg-gray-100 shadow-inner group mb-6">
+              <img
+                src="https://tse2.mm.bing.net/th/id/OIP.zCh1_E6tuDZCfbsOy1OeaQHaEm?r=0&pid=Api"
+                alt="Preview do Laudo Técnico em PDF"
+                className="w-full h-56 object-cover object-top transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+                <div className="text-white">
+                  <p className="text-xs font-medium text-emerald-300">📄 Formato PDF Oficial (A4)</p>
+                  <p className="text-sm font-semibold">Inspecionado e Assinado com ART / CREA</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Link para o arquivo em /public */}
+            <a
+              href="/exemplo-laudo-tecnico.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-[#024a59] hover:bg-[#013540] text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm sm:text-base shadow-md text-center"
+            >
+              <span>📥</span>
+              <span>Clique aqui para ver um exemplo de PDF completo como você teria em mãos</span>
+            </a>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
