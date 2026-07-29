@@ -1,13 +1,39 @@
 'use client';
 
-import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { TextPlugin } from 'gsap/TextPlugin';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(TextPlugin)
 
 export default function HeroSection() {
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const cursorRef = useRef<HTMLSpanElement>(null);
+
+
+  useGSAP(() => {
+    const textToType = "VISTORIAS TÉCNICAS DE ALTA PRECISÃO EM IMÓVEIS";
+    gsap.to(titleRef.current, {
+      duration: 2.5,
+      text: textToType,
+      ease: 'none',
+    });
+
+    // Efeito do cursor piscando
+    gsap.to(cursorRef.current, {
+      opacity: 0,
+      repeat: -1,
+      yoyo: true,
+      duration: 0.5,
+      ease: 'power2.inOut',
+    });
+  }, { scope: containerRef });
   return (
-    <section className="w-full bg-white pt-12 pb-20 px-4 sm:px-6 lg:px-8">
+    <section ref={containerRef} className="w-full bg-white pt-12 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
         
         {/* Badge Credenciados */}
@@ -17,8 +43,15 @@ export default function HeroSection() {
         </div>
 
         {/* Título Principal */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight max-w-4xl mb-6 uppercase">
-          Vistorias Técnicas de Alta Precisão em Imóveis
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight max-w-4xl mb-6 min-h-[3em] sm:min-h-[2.2em] flex items-center justify-center flex-wrap uppercase">
+          {/* Texto que será digitado pelo GSAP */}
+          <span ref={titleRef}></span>
+          
+          {/* Cursor da máquina de escrever */}
+          <span
+            ref={cursorRef}
+            className="inline-block w-0.75 h-[0.85em] bg-[#024a59] ml-1.5 align-middle"
+          ></span>
         </h1>
 
         {/* Subtítulo */}
