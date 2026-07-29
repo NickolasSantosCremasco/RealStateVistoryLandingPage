@@ -42,17 +42,17 @@ export default function HeroSection() {
           Vistoriadores Credenciados
         </div>
 
-        {/* Título Principal */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight max-w-4xl mb-6 min-h-[3em] sm:min-h-[2.2em] flex items-center justify-center flex-wrap uppercase">
-          {/* Texto que será digitado pelo GSAP */}
-          <span ref={titleRef}></span>
-          
-          {/* Cursor da máquina de escrever */}
-          <span
-            ref={cursorRef}
-            className="inline-block w-0.75 h-[0.85em] bg-[#024a59] ml-1.5 align-middle"
-          ></span>
-        </h1>
+      {/* Título Principal */}
+      <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight max-w-4xl mb-6 min-h-[3em] sm:min-h-[2.2em] text-center uppercase">
+        {/* Span do texto que será digitado pelo GSAP */}
+        <span ref={titleRef} className="inline"></span>
+        
+        {/* Cursor alinhado inline logo após o texto */}
+        <span
+          ref={cursorRef}
+          className="inline-block w-0.75 h-[0.8em] bg-[#024a59] ml-1.5 translate-y-0.5"
+        ></span>
+      </h1>
 
         {/* Subtítulo */}
         <p className="text-sm sm:text-base text-gray-600 max-w-2xl mb-10 leading-relaxed font-normal">
