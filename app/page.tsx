@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import PricingSection from "@/components/Princing";
 import Service from "@/components/Service";
 import Footer from "@/components/Footer";
+import VideoSection from "@/components/videoSection";
 
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Navbar />
       <HeroSection />
+      <VideoSection />
       <Service />
       <PricingSection />
       <ContactSection />
