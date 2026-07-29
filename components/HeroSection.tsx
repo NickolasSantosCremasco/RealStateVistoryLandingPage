@@ -13,6 +13,7 @@ export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cursorRef = useRef<HTMLSpanElement>(null);
+  const countRef = useRef<HTMLSpanElement>(null);
 
 
   useGSAP(() => {
@@ -30,6 +31,19 @@ export default function HeroSection() {
       yoyo: true,
       duration: 0.5,
       ease: 'power2.inOut',
+    });
+    const counterObj = { value: 0 };
+
+    gsap.to(counterObj, {
+      value: 1000,
+      duration: 1.8, // Duração rápida (1.8 segundos)
+      ease: 'power2.out', // desacelera suavemente no final
+      onUpdate: () => {
+        if (countRef.current) {
+          // Arredonda o valor atual e formata com o sinal de "+"
+          countRef.current.textContent = `+${Math.floor(counterObj.value)}`;
+        }
+      },
     });
   }, { scope: containerRef });
   return (
@@ -85,7 +99,7 @@ export default function HeroSection() {
           {/* Card 1: Métricas */}
           <div className="bg-gray-50/50 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between">
             <div>
-              <span className="text-4xl sm:text-5xl font-extrabold text-gray-900 block mb-2">
+              <span ref={countRef} className="text-4xl sm:text-5xl font-extrabold text-gray-900 block mb-2">
                 +1000
               </span>
               <p className="text-gray-600 font-medium text-sm sm:text-base">
