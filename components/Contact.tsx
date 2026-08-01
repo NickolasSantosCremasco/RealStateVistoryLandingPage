@@ -171,12 +171,7 @@ export default function ContactSection() {
                 </p>
               </div>
 
-              <div className="flex items-start gap-2.5">
-                <span className="text-base shrink-0">⏰</span>
-                <p>
-                  <strong className="text-gray-900">Horário:</strong> Segunda a Sábado, das 08h às 19h.
-                </p>
-              </div>
+           
 
               <div className="flex items-start gap-2.5">
                 <span className="text-base shrink-0">✉️</span>
@@ -185,12 +180,7 @@ export default function ContactSection() {
                 </p>
               </div>
 
-              <div className="flex items-start gap-2.5">
-                <span className="text-base shrink-0">📞</span>
-                <p>
-                  <strong className="text-gray-900">Telefone:</strong> (11) 99706-9616
-                </p>
-              </div>
+              
             </div>
           </div>
 
