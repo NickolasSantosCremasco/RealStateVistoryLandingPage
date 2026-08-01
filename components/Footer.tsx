@@ -14,8 +14,8 @@ export default function Footer() {
           
           {/* Coluna 1: Logo e Sobre */}
           <div className="space-y-4">
-            <Link href="/" className="text-xl font-bold text-white tracking-tight block">
-              [LOGO]
+            <Link href="/" className="text-xl w-30 font-bold   text-white tracking-tight block">
+              <img src="/img/logo2.jpg" alt="logo" className='rounded-2xl' />
             </Link>
             <p className="text-xs text-gray-400 leading-relaxed">
               Laudos técnicos e vistorias imobiliárias de alta precisão. Garantia técnica e jurídica para compradores, proprietários e construtoras.
