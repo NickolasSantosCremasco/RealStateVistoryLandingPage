@@ -20,10 +20,7 @@ export default function Footer() {
             <p className="text-xs text-gray-400 leading-relaxed">
               Laudos técnicos e vistorias imobiliárias de alta precisão. Garantia técnica e jurídica para compradores, proprietários e construtoras.
             </p>
-            <div className="inline-flex items-center gap-2 bg-[#024a59]/50 border border-emerald-500/20 px-3 py-1 rounded text-[11px] text-emerald-300">
-              <span>🛡️</span>
-              <span>Engenharia Registrada CREA/IBAPE</span>
-            </div>
+           
           </div>
 
           {/* Coluna 2: Navegação */}
@@ -68,8 +65,6 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs text-gray-400">
               <li>• Recebimento de Imóvel Novo (Chaves)</li>
               <li>• Vistoria de Entrada e Saída de Locação</li>
-              <li>• Vistoria Cautelar de Vizinhança</li>
-              <li>• Inspeção Predial Comercial</li>
               <li>• Análise Termográfica de Infiltrações</li>
             </ul>
           </div>
@@ -83,15 +78,11 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <span className="text-emerald-400">📍</span> São Paulo & Região Metropolitana
               </li>
+             
               <li className="flex items-center gap-2">
-                <span className="text-emerald-400">📞</span> (11) 98765-4321
+                <span className="text-emerald-400">✉️</span> douglasgc@ymail.com
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-emerald-400">✉️</span> contato@vistoriapro.com.br
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-emerald-400">⏰</span> Seg. a Sáb. das 08h às 19h
-              </li>
+         
             </ul>
           </div>
 

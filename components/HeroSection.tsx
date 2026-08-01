@@ -70,7 +70,7 @@ export default function HeroSection() {
 
         {/* Subtítulo */}
         <p className="text-sm sm:text-base text-gray-600 max-w-2xl mb-10 leading-relaxed font-normal">
-          Garantia Técnica e jurídica para construtoras, proprietários e investidores<br className="hidden sm:inline" />
+          Laudos técnicos com garantia jurídica para proprietários, locatários e investidores.<br className="hidden sm:inline" />
           Laudos completos em até 24h
         </p>
 

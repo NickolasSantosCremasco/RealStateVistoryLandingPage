@@ -34,21 +34,7 @@ export default function AnatomySection() {
           </div>
         </div>
 
-        {/* 2. Callout: Garantia Jurídica (Esquerda Inferior) */}
-        <div className="hidden lg:flex items-start gap-3 absolute -left-16 bottom-24 z-20 max-w-xs bg-white p-4 rounded-xl shadow-xl border border-gray-100 text-left">
-          <div className="bg-blue-50 p-2 rounded-lg text-2xl flex-shrink-0">
-            ⚖️
-          </div>
-          <div>
-            <h4 className="font-bold text-gray-900 text-sm mb-1">
-              Garantia Jurídica e Técnica:
-            </h4>
-            <p className="text-xs text-gray-600 leading-snug">
-              Assinado por Engenheiro Civil credenciado com ART (Anotação de Responsabilidade Técnica) emitida pelo CREA.
-            </p>
-          </div>
-        </div>
-
+       
         {/* 3. Callout: Análise Diagnóstica (Direita Superior) */}
         <div className="hidden lg:flex items-start gap-3 absolute -right-12 top-12 z-20 max-w-xs bg-white p-4 rounded-xl shadow-xl border border-gray-100 text-left">
           <div className="bg-emerald-50 p-2 rounded-lg text-2xl flex-shrink-0">
@@ -105,7 +91,7 @@ export default function AnatomySection() {
               <p><strong className="text-gray-900">Identificação:</strong> Res. San Marino</p>
               <p><strong className="text-gray-900">Proprietário:</strong> Eng. Roberto Silva</p>
               <p><strong className="text-gray-900">Endereço do imóvel:</strong> R. das Palmeiras, 450</p>
-              <p><strong className="text-gray-900">Finalidade laudo:</strong> Garantia / Entrega da Obra</p>
+              <p><strong className="text-gray-900">Finalidade laudo:</strong> Garantia</p>
             </div>
           </div>
 
@@ -128,10 +114,10 @@ export default function AnatomySection() {
               PARECER TÉCNICO
             </h3>
             <p className="text-gray-600 mb-2 leading-relaxed">
-              O presente laudo técnico pericial tem por objetivo o levantamento das anomalias e falhas construtivas aparentes e ocultas no imóvel inspecionado, em conformidade com as diretrizes da norma ABNT NBR 13752 e procedimentos do IBAPE.
+              O presente laudo técnico pericial tem por objetivo o a constatação de anomalias e falhas estruturais aparentes no imóvel inspecionado, foco exclusivo na preservação do proprietário e do inquilino.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Durante a inspeção técnica, identificou-se ponto crítico de infiltração na parede limítrofe da suíte master com histórico de impermeabilização inadequada. Registros térmicos confirmam a área afetada e extensão do dano oculto.
+              Durante a inspeção técnica, identificou-se ponto crítico de infiltração na pia da cozinha causando estufamento nos gabinetes.
             </p>
           </div>
 
@@ -146,7 +132,7 @@ export default function AnatomySection() {
                 {/* Efeito Visual Simulado da Câmera Térmica */}
                 <div className="absolute inset-0 bg-opacity-30 bg-yellow-300 rounded mix-blend-overlay"></div>
                 <span className="relative z-10 text-[9px] font-bold text-white bg-black/60 px-1.5 py-0.5 rounded">
-                  TERMOGRAFIA (FLIR)
+                  TERMOGRAFIA 
                 </span>
               </div>
               
@@ -210,13 +196,7 @@ export default function AnatomySection() {
             </div>
           </div>
 
-          <div className="bg-white p-4 rounded-xl shadow-md border border-gray-200 flex items-start gap-3">
-            <span className="text-2xl">⚖️</span>
-            <div>
-              <h4 className="font-bold text-gray-900 text-sm">Garantia Jurídica e Técnica</h4>
-              <p className="text-xs text-gray-600">Assinado por Engenheiro Civil credenciado com ART (Anotação de Responsabilidade Técnica) emitida pelo CREA.</p>
-            </div>
-          </div>
+      
         </div>
 
       </div>

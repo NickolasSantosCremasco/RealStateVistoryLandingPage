@@ -43,7 +43,7 @@ export default function VideoSection({
               </h3>
               
               <p className="text-xs sm:text-sm text-white/90 mb-6 font-medium max-w-xs mx-auto drop-shadow-sm">
-                Conheça a tecnologia e o rigor técnico aplicados na emissão dos nossos laudos.
+                Laudos com auxílio da inteligência artificial
               </p>
 
               {/* Botão de Play com Animação de Pulso */}

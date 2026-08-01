@@ -16,7 +16,7 @@ export default function PricingSection() {
       title: 'COMPACTO & STUDIO',
       pricePrefix: '',
       price: 'R$ 199',
-      installments: 'ou até 3x no cartão',
+
       features: [
         'Inspeção de até 45m²',
         'Studio / 1 dormitório + 1 banheiro',
@@ -38,7 +38,7 @@ export default function PricingSection() {
       title: 'PADRÃO / INTERMEDIÁRIO',
       pricePrefix: '',
       price: 'R$ 299',
-      installments: 'ou até 3x no cartão',
+
       features: [
         'Inspeção de 46m² a 100m²',
         'Até 3 dormitórios + 2 banheiros',
@@ -61,14 +61,14 @@ export default function PricingSection() {
       title: 'ESPECIAL & ALTO PADRÃO',
       pricePrefix: 'A partir de ',
       price: 'R$ 399',
-      installments: 'ou até 3x no cartão',
+     
       features: [
         'Inspeção acima de 100m²',
         'Dormitórios ilimitados / Varanda Gourmet',
         'Análise diagnóstica avançada',
         'Verificação de móveis planejados',
-        'Vagas de garagem e depósito',
-        'Laudo assinado (CREA/IBAPE)',
+        'Verficação de vagas de garagem, depósito e áreas externas',
+       
       ],
     },
   ];
@@ -131,10 +131,8 @@ export default function PricingSection() {
                   </span>
                 </div>
 
-                {/* Parcelamento */}
-                <span className={`text-xs ${plan.isPopular ? 'text-emerald-100' : 'text-gray-500'}`}>
-                  {plan.installments}
-                </span>
+               
+               
               </div>
 
               {/* Lista de Features */}
