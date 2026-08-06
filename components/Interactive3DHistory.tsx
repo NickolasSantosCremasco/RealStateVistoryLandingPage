@@ -11,21 +11,21 @@ const storyPoints = [
     title: 'Vistoria de Entrada',
     room: 'Sala & Áreas Comuns',
     desc: 'Mapeamento detalhado de pisos, pintura, instalações elétricas e esquadrias antes da entrega das chaves.',
-    position: [-0.8, 0.4, 0.6] as [number, number, number],
+    position: [-4, 2, 0.6] as [number, number, number],
   },
   {
     id: 'termografia',
     title: 'Análise Termográfica',
     room: 'Cozinha & Áreas Úmidas',
     desc: 'Detecção de infiltrações ocultas e vazamentos não visíveis a olho nu com câmera infravermelha.',
-    position: [0.6, 0.4, 1.0] as [number, number, number],
+    position: [-3.5, 2, -2] as [number, number, number],
   },
   {
     id: 'laudo-tecnico',
     title: 'Laudo Digital com IA',
     room: 'Suíte / Dormitório',
     desc: 'Relatório fotográfico de alta precisão gerado com validação jurídica para proprietários e inquilinos.',
-    position: [0.5, 0.4, -0.8] as [number, number, number],
+    position: [-2, 2, -3] as [number, number, number],
   },
 ];
 
