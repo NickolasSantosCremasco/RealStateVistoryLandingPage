@@ -134,9 +134,7 @@ export default function HeroSection() {
               <span className="text-xs bg-white border border-gray-200 rounded px-2.5 py-1 text-gray-600">
                 Residencial
               </span>
-              <span className="text-xs bg-white border border-gray-200 rounded px-2.5 py-1 text-gray-600">
-                Comercial
-              </span>
+             
             </div>
           </div>
 
