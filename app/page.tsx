@@ -1,3 +1,6 @@
+'use client'
+
+import dynamic from 'next/dynamic';
 import ContactSection from "@/components/Contact";
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
@@ -7,6 +10,11 @@ import Footer from "@/components/Footer";
 import VideoSection from "@/components/videoSection";
 import AboutSection from "@/components/AboutSection";
 
+// Importação dinâmica com SSR desativado para o Three.js / WebGL
+const Interactive3DHistory = dynamic(
+  () => import("@/components/Interactive3DHistory"),
+  { ssr: false }
+);
 
 export default function Home() {
   return (
@@ -15,6 +23,7 @@ export default function Home() {
       <HeroSection />
       <VideoSection />
       <AboutSection />
+      <Interactive3DHistory />
       <Service />
       <PricingSection />
       <ContactSection />

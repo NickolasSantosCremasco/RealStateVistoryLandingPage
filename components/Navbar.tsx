@@ -57,10 +57,10 @@ export default function Navbar() {
               Serviço
             </Link>
             <Link 
-              href="#anatomia" 
+              href="#AboutSection" 
               className="text-slate-700 hover:text-[#00e699] font-bold text-sm transition-colors"
             >
-              Anatomia do Laudo
+              Sobre Nós
             </Link>
             <Link 
               href="#preco" 
