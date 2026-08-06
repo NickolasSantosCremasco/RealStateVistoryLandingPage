@@ -5,7 +5,7 @@ import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { useGSAP } from '@gsap/react';
 
-gsap.registerPlugin(TextPlugin)
+gsap.registerPlugin(TextPlugin);
 
 export default function HeroSection() {
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
@@ -14,7 +14,6 @@ export default function HeroSection() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const cursorRef = useRef<HTMLSpanElement>(null);
   const countRef = useRef<HTMLSpanElement>(null);
-
 
   useGSAP(() => {
     const textToType = "VISTORIAS TÉCNICAS DE ALTA PRECISÃO EM IMÓVEIS";
@@ -32,20 +31,21 @@ export default function HeroSection() {
       duration: 0.5,
       ease: 'power2.inOut',
     });
+
     const counterObj = { value: 0 };
 
     gsap.to(counterObj, {
       value: 1000,
-      duration: 1.8, // Duração rápida (1.8 segundos)
-      ease: 'power2.out', // desacelera suavemente no final
+      duration: 1.8,
+      ease: 'power2.out',
       onUpdate: () => {
         if (countRef.current) {
-          // Arredonda o valor atual e formata com o sinal de "+"
           countRef.current.textContent = `+${Math.floor(counterObj.value)}`;
         }
       },
     });
   }, { scope: containerRef });
+
   return (
     <section ref={containerRef} className="w-full bg-white pt-12 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
@@ -56,17 +56,14 @@ export default function HeroSection() {
           Vistoriadores Credenciados
         </div>
 
-      {/* Título Principal */}
-      <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight max-w-4xl mb-6 min-h-[3em] sm:min-h-[2.2em] text-center uppercase">
-        {/* Span do texto que será digitado pelo GSAP */}
-        <span ref={titleRef} className="inline"></span>
-        
-        {/* Cursor alinhado inline logo após o texto */}
-        <span
-          ref={cursorRef}
-          className="inline-block w-0.75 h-[0.8em] bg-[#024a59] ml-1.5 translate-y-0.5"
-        ></span>
-      </h1>
+        {/* Título Principal */}
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight max-w-4xl mb-6 min-h-[3em] sm:min-h-[2.2em] text-center uppercase">
+          <span ref={titleRef} className="inline"></span>
+          <span
+            ref={cursorRef}
+            className="inline-block w-0.75 h-[0.8em] bg-[#024a59] ml-1.5 translate-y-0.5"
+          ></span>
+        </h1>
 
         {/* Subtítulo */}
         <p className="text-sm sm:text-base text-gray-600 max-w-2xl mb-10 leading-relaxed font-normal">
@@ -93,14 +90,14 @@ export default function HeroSection() {
           </button>
         </div>
 
-        {/* Grid de Cards Prova Social / Imagem */}
+        {/* Grid de Cards Prova Social / Imagem / SLA */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl items-stretch text-left">
           
           {/* Card 1: Métricas */}
           <div className="bg-gray-50/50 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between">
             <div>
               <span ref={countRef} className="text-4xl sm:text-5xl font-extrabold text-gray-900 block mb-2">
-                +1000
+                +3000
               </span>
               <p className="text-gray-600 font-medium text-sm sm:text-base">
                 Laudos Técnicos Emitidos
@@ -129,25 +126,28 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Card 3: Avaliações e Depoimento */}
+          {/* Card 3: Garantia Operational / Agilidade 24h (SUBSTITUIU AS AVALIAÇÕES) */}
           <div className="bg-gray-50/50 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between">
             <div>
-              <div className="flex -space-x-2 overflow-hidden mb-4">
-                <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Cliente" />
-                <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Cliente" />
-                <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Cliente" />
-                <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Cliente" />
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg font-bold">
+                  ⚡
+                </div>
+                <span className="text-[10px] font-mono font-bold bg-emerald-100/80 text-emerald-800 px-2.5 py-1 rounded-md uppercase border border-emerald-200">
+                  Agilidade Digital
+                </span>
               </div>
               
-              <div className="flex items-center gap-1.5 mb-2">
-                <span className="text-yellow-400 text-lg">★</span>
-                <span className="font-bold text-gray-900 text-base">4.9/5</span>
-                <span className="text-xs text-gray-500">em Avaliações</span>
-              </div>
+              <strong className="text-3xl sm:text-4xl font-extrabold text-gray-900 block leading-none font-mono">
+                24 Horas
+              </strong>
+              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider block mt-1">
+                Envio do Laudo Completo
+              </span>
             </div>
 
-            <p className="text-xs text-gray-600 italic border-t border-gray-100 pt-3 mt-auto">
-              "Serviço excelente, laudo bem detalhado e me forneceu uma proteção jurídica"
+            <p className="text-xs text-gray-600 italic border-t border-gray-100 pt-3 mt-auto leading-relaxed">
+              "Relatório fotográfico minucioso e organizado enviado direto no celular em tempo recorde."
             </p>
           </div>
 
@@ -155,7 +155,7 @@ export default function HeroSection() {
 
       </div>
 
-      {/* ================= ESTRUTURA DO MODAL (ESTAVA FALTANDO) ================= */}
+      {/* MODAL DE EXEMPLO EM PDF */}
       {isPdfModalOpen && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn"
@@ -168,7 +168,7 @@ export default function HeroSection() {
             {/* Botão Fechar (X) */}
             <button
               onClick={() => setIsPdfModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors text-lg font-bold"
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors text-lg font-bold cursor-pointer"
               aria-label="Fechar modal"
             >
               ✕
@@ -191,7 +191,7 @@ export default function HeroSection() {
                 alt="Preview do Laudo Técnico em PDF"
                 className="w-full h-56 object-cover object-top transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
                 <div className="text-white">
                   <p className="text-xs font-medium text-emerald-300">📄 Formato PDF Oficial (A4)</p>
                   <p className="text-sm font-semibold">Inspecionado e Assinado com ART / CREA</p>
