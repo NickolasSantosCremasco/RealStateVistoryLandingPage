@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 
@@ -14,174 +14,230 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Lógica para envio de formulário ou integração com API
-    console.log('Dados do formulário:', formData);
+
+    // Monta o texto formatado para envio direto ao WhatsApp
+    const textoMensagem = 
+      `*Novo Agendamento via Site* 🏢\n\n` +
+      `*Nome:* ${formData.nome}\n` +
+      `*WhatsApp:* ${formData.whatsapp}\n` +
+      `*E-mail:* ${formData.email}\n` +
+      `*Tipo de Imóvel:* ${formData.tipoImovel}\n` +
+      `*Tipo de Vistoria:* ${formData.tipoVistoria}\n` +
+      `*Mensagem:* ${formData.mensagem || 'Nenhuma mensagem informada'}`;
+
+    const urlEncoded = encodeURIComponent(textoMensagem);
+    window.open(`https://wa.me/5511997069616?text=${urlEncoded}`, '_blank');
   };
 
   return (
-    <section id="contato" className="w-full bg-[#012f38] text-white py-16 px-4 sm:px-6 lg:px-8">
+    <section id="contato" className="w-full bg-[#f4f6ff] py-20 px-4 sm:px-6 lg:px-8 text-slate-800">
       <div className="max-w-6xl mx-auto">
         
-        {/* Título e Subtítulo */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+        {/* Cabeçalho */}
+        <div className="text-center mb-14">
+          <span className="text-xs font-bold text-emerald-600 tracking-widest uppercase mb-2 block">
+            Atendimento Exclusivo
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#023b47] tracking-tight mb-4">
             Agende sua Vistoria ou Tire suas Dúvidas
           </h2>
-          <p className="text-emerald-100/80 text-sm sm:text-base max-w-xl mx-auto">
-            Preencha os dados abaixo e nossa equipe entrará em contato em breve.
+          <p className="text-slate-500 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+            Nossa equipe técnica está pronta para oferecer o suporte necessário para a segurança do seu patrimônio.
           </p>
         </div>
 
-        {/* Grid Principal (Formulário + Coluna de Informações) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Grid Principal */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Formulário (8 Colunas em telas grandes) */}
-          <form 
-            onSubmit={handleSubmit} 
-            className="lg:col-span-7 space-y-4 text-gray-800"
-          >
-            {/* Nome e WhatsApp */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Nome Completo"
-                  required
-                  className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 placeholder-gray-400"
-                  value={formData.nome}
-                  onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
-                />
-              </div>
-              <div>
-                <input
-                  type="tel"
-                  placeholder="WhatsApp / Telefone"
-                  required
-                  className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 placeholder-gray-400"
-                  value={formData.whatsapp}
-                  onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                />
-              </div>
-            </div>
-
-            {/* E-mail */}
+          {/* Coluna da Esquerda: Canais Diretos */}
+          <div className="lg:col-span-4 space-y-8 pt-2">
             <div>
-              <input
-                type="email"
-                placeholder="E-mail"
-                required
-                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 placeholder-gray-400"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              />
-            </div>
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-6">
+                Canais Diretos
+              </span>
 
-            {/* Tipo de Imóvel */}
-            <div>
-              <select
-                required
-                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 text-gray-700"
-                value={formData.tipoImovel}
-                onChange={(e) => setFormData({ ...formData, tipoImovel: e.target.value })}
-              >
-                <option value="" disabled hidden>
-                  Selecione o Tipo de Imóvel
-                </option>
-                <option value="studio">Studio / Apartamento Compacto</option>
-                <option value="apartamento">Apartamento Padrão</option>
-                <option value="casa">Casa / Sobrado</option>
-                <option value="comercial">Comercial / Sala / Galpão</option>
-                <option value="construtora">Construtora / Empreendimento</option>
-              </select>
-            </div>
+              <div className="space-y-6">
+                {/* WhatsApp */}
+                <a 
+                  href="https://wa.me/5511997069616" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group cursor-pointer"
+                >
+                  <div className="w-12 h-12 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-emerald-600 text-xl group-hover:bg-emerald-50 transition-colors flex-shrink-0">
+                    💬
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-semibold text-slate-400 block uppercase">
+                      WhatsApp
+                    </span>
+                    <span className="text-sm font-bold text-[#023b47] group-hover:text-emerald-600 transition-colors">
+                      Falar com Consultor
+                    </span>
+                  </div>
+                </a>
 
-            {/* Tipo de Vistoria */}
-            <div>
-              <select
-                required
-                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 text-gray-700"
-                value={formData.tipoVistoria}
-                onChange={(e) => setFormData({ ...formData, tipoVistoria: e.target.value })}
-              >
-                <option value="" disabled hidden>
-                  Selecione o Tipo de Vistoria
-                </option>
-                <option value="entrada_saida">Entrada / Saída de Locação</option>
-                <option value="recebimento_chave">Recebimento de Chaves (Imóvel Novo)</option>
-                <option value="cautelar">Vistoria Cautelar de Vizinhança</option>
-                <option value="outro">Outro / Diagnóstico Específico</option>
-              </select>
-            </div>
+                {/* E-mail */}
+                <a 
+                  href="mailto:douglasgc@ymail.com"
+                  className="flex items-center gap-4 group cursor-pointer"
+                >
+                  <div className="w-12 h-12 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-emerald-600 text-xl group-hover:bg-emerald-50 transition-colors flex-shrink-0">
+                    ✉️
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-semibold text-slate-400 block uppercase">
+                      E-mail
+                    </span>
+                    <span className="text-sm font-bold text-[#023b47] group-hover:text-emerald-600 transition-colors">
+                      douglasgc@ymail.com
+                    </span>
+                  </div>
+                </a>
 
-            {/* Mensagem Opcional */}
-            <div>
-              <textarea
-                rows={4}
-                placeholder="Mensagem (Opcional)"
-                className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 placeholder-gray-400 resize-none"
-                value={formData.mensagem}
-                onChange={(e) => setFormData({ ...formData, mensagem: e.target.value })}
-              ></textarea>
-            </div>
-
-            {/* Botão de Envio */}
-            <button
-              type="submit"
-              className="w-full bg-[#035868] hover:bg-[#024350] border border-emerald-400/40 text-white font-bold py-3.5 px-6 rounded-lg transition-colors text-sm sm:text-base shadow-lg mt-2"
-            >
-              Solicitar Agendamento / Contato
-            </button>
-          </form>
-
-          {/* Coluna de Informações (5 Colunas em telas grandes) */}
-          <div className="lg:col-span-5 space-y-4">
-            
-            {/* CTA WhatsApp */}
-            <a
-              href="https://wa.me/5511997069616"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between bg-emerald-950/40 border-2 border-emerald-500/80 p-4 rounded-xl hover:bg-emerald-900/30 transition-colors group"
-            >
-              <div className="flex items-center gap-3">
-                <div className="bg-emerald-500 text-white p-2.5 rounded-full text-2xl shrink-0">
-                  💬
+                {/* Abrangência */}
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-white shadow-sm border border-slate-100 flex items-center justify-center text-red-500 text-xl flex-shrink-0">
+                    📍
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-semibold text-slate-400 block uppercase">
+                      Abrangência
+                    </span>
+                    <span className="text-sm font-bold text-[#023b47]">
+                      São Paulo e Região Metropolitana
+                    </span>
+                  </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Aviso LGPD */}
+            <div className="pt-6 border-t border-slate-200/60">
+              <div className="flex items-start gap-2 text-slate-500">
+                <span className="text-xs text-slate-400 mt-0.5">🛡️</span>
                 <div>
-                  <h4 className="font-bold text-white text-sm sm:text-base">
-                    Prefere falar agora?
-                  </h4>
-                  <p className="text-xs text-emerald-300 font-medium group-hover:underline">
-                    Chamar no WhatsApp &rarr;
+                  <span className="text-[11px] font-bold uppercase text-slate-500 tracking-wider block mb-1">
+                    Ambiente Seguro
+                  </span>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Seus dados estão protegidos de acordo com a LGPD e serão utilizados apenas para o seu atendimento.
                   </p>
                 </div>
               </div>
-            </a>
-
-            {/* Informações de Atendimento */}
-            <div className="bg-white text-gray-800 p-6 rounded-xl shadow-lg space-y-4 text-xs sm:text-sm">
-              <h3 className="font-bold text-base text-gray-900 border-b border-gray-100 pb-2">
-                Informações de Atendimento
-              </h3>
-
-              <div className="flex items-start gap-2.5">
-                <span className="text-base shrink-0">📍</span>
-                <p>
-                  <strong className="text-gray-900">Região:</strong> Atendemos Capital e Região Metropolitana de São Paulo.
-                </p>
-              </div>
-
-           
-
-              <div className="flex items-start gap-2.5">
-                <span className="text-base shrink-0">✉️</span>
-                <p>
-                  <strong className="text-gray-900">E-mail:</strong> douglasgc@ymail.com
-                </p>
-              </div>
-
-              
             </div>
+          </div>
+
+          {/* Coluna da Direita: Card com Formulário */}
+          <div className="lg:col-span-8 bg-white rounded-3xl p-6 sm:p-10 shadow-xl shadow-slate-200/50 border border-slate-100">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              
+              {/* Nome + WhatsApp */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+                    Nome Completo
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Ex: João Silva"
+                    required
+                    className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                    value={formData.nome}
+                    onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+                    WhatsApp / Telefone
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="(11) 99999-9999"
+                    required
+                    className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                    value={formData.whatsapp}
+                    onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              {/* E-mail */}
+              <div>
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+                  E-mail Corporativo ou Pessoal
+                </label>
+                <input
+                  type="email"
+                  placeholder="seu@email.com"
+                  required
+                  className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
+              </div>
+
+              {/* Tipo de Imóvel + Tipo de Vistoria */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+                    Tipo de Imóvel
+                  </label>
+                  <select
+                    required
+                    className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all cursor-pointer"
+                    value={formData.tipoImovel}
+                    onChange={(e) => setFormData({ ...formData, tipoImovel: e.target.value })}
+                  >
+                    <option value="" disabled hidden>Selecione</option>
+                    <option value="Studio / Apartamento Compacto">Studio / Apartamento Compacto</option>
+                    <option value="Apartamento Padrão">Apartamento Padrão</option>
+                    <option value="Casa / Sobrado">Casa / Sobrado</option>
+                    <option value="Comercial / Galpão">Comercial / Galpão</option>
+                    <option value="Empreendimento / Construtora">Empreendimento / Construtora</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+                    Tipo de Vistoria
+                  </label>
+                  <select
+                    required
+                    className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all cursor-pointer"
+                    value={formData.tipoVistoria}
+                    onChange={(e) => setFormData({ ...formData, tipoVistoria: e.target.value })}
+                  >
+                    <option value="" disabled hidden>Selecione</option>
+                    <option value="Recebimento de Chaves (Imóvel Novo)">Recebimento de Chaves (Imóvel Novo)</option>
+                    <option value="Entrada / Saída de Locação">Entrada / Saída de Locação</option>
+                    <option value="Vistoria Cautelar de Vizinhança">Vistoria Cautelar de Vizinhança</option>
+                    <option value="Outro / Diagnóstico Específico">Outro / Diagnóstico Específico</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Mensagem Opcional */}
+              <div>
+                <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-2">
+                  Mensagem (Opcional)
+                </label>
+                <textarea
+                  rows={4}
+                  placeholder="Descreva brevemente sua necessidade..."
+                  className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all resize-none"
+                  value={formData.mensagem}
+                  onChange={(e) => setFormData({ ...formData, mensagem: e.target.value })}
+                ></textarea>
+              </div>
+
+              {/* Botão de Envio Verde Neon / Mint */}
+              <button
+                type="submit"
+                className="w-full bg-[#00e699] hover:bg-[#00cc88] text-[#023b47] font-extrabold uppercase tracking-wider py-4 px-6 rounded-xl transition-all duration-200 shadow-md shadow-emerald-500/10 text-sm cursor-pointer"
+              >
+                Solicitar Agendamento
+              </button>
+            </form>
           </div>
 
         </div>
