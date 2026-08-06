@@ -16,34 +16,61 @@ export default function HeroSection() {
   const countRef = useRef<HTMLSpanElement>(null);
 
   useGSAP(() => {
-    const textToType = "VISTORIAS TÉCNICAS DE ALTA PRECISÃO EM IMÓVEIS";
-    gsap.to(titleRef.current, {
-      duration: 2.5,
-      text: textToType,
-      ease: 'none',
-    });
+    // Função com todas as animações GSAP do Hero
+    const startHeroAnimations = () => {
+      const textToType = "VISTORIAS TÉCNICAS DE ALTA PRECISÃO EM IMÓVEIS";
 
-    // Efeito do cursor piscando
-    gsap.to(cursorRef.current, {
-      opacity: 0,
-      repeat: -1,
-      yoyo: true,
-      duration: 0.5,
-      ease: 'power2.inOut',
-    });
+      // Garante que o título inicie limpo para a digitação
+      if (titleRef.current) titleRef.current.textContent = "";
 
-    const counterObj = { value: 0 };
+      // Digitação do título
+      gsap.to(titleRef.current, {
+        duration: 2.5,
+        text: textToType,
+        ease: 'none',
+      });
 
-    gsap.to(counterObj, {
-      value: 1000,
-      duration: 1.8,
-      ease: 'power2.out',
-      onUpdate: () => {
-        if (countRef.current) {
-          countRef.current.textContent = `+${Math.floor(counterObj.value)}`;
-        }
-      },
-    });
+      // Cursor piscando
+      gsap.to(cursorRef.current, {
+        opacity: 0,
+        repeat: -1,
+        yoyo: true,
+        duration: 0.5,
+        ease: 'power2.inOut',
+      });
+
+      // Contador dinâmico até 3000
+      const counterObj = { value: 0 };
+      gsap.to(counterObj, {
+        value: 3000,
+        duration: 1.8,
+        ease: 'power2.out',
+        onUpdate: () => {
+          if (countRef.current) {
+            countRef.current.textContent = `+${Math.floor(counterObj.value)}`;
+          }
+        },
+      });
+    };
+
+    // Handler que escuta o término do Preloader
+    const handleLoaderComplete = () => {
+      startHeroAnimations();
+    };
+
+    window.addEventListener('loaderComplete', handleLoaderComplete);
+
+    // Fallback: caso o evento já tenha passado antes do listener (ex: carregamento instantâneo via cache)
+    const fallbackTimer = setTimeout(() => {
+      if (titleRef.current && titleRef.current.textContent === "") {
+        startHeroAnimations();
+      }
+    }, 2500);
+
+    return () => {
+      window.removeEventListener('loaderComplete', handleLoaderComplete);
+      clearTimeout(fallbackTimer);
+    };
   }, { scope: containerRef });
 
   return (
@@ -56,7 +83,7 @@ export default function HeroSection() {
           Vistoriadores Credenciados
         </div>
 
-        {/* Título Principal */}
+        {/* Título Principal com Cursor */}
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight max-w-4xl mb-6 min-h-[3em] sm:min-h-[2.2em] text-center uppercase">
           <span ref={titleRef} className="inline"></span>
           <span
@@ -93,11 +120,11 @@ export default function HeroSection() {
         {/* Grid de Cards Prova Social / Imagem / SLA */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl items-stretch text-left">
           
-          {/* Card 1: Métricas */}
+          {/* Card 1: Métricas Animadas (+3000) */}
           <div className="bg-gray-50/50 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between">
             <div>
-              <span ref={countRef} className="text-4xl sm:text-5xl font-extrabold text-gray-900 block mb-2">
-                +3000
+              <span ref={countRef} className="text-4xl sm:text-5xl font-extrabold text-gray-900 block mb-2 font-mono">
+                +0
               </span>
               <p className="text-gray-600 font-medium text-sm sm:text-base">
                 Laudos Técnicos Emitidos
@@ -126,7 +153,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Card 3: Garantia Operational / Agilidade 24h (SUBSTITUIU AS AVALIAÇÕES) */}
+          {/* Card 3: SLA Agilidade Digital 24h */}
           <div className="bg-gray-50/50 border border-gray-200 rounded-2xl p-6 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-3">
@@ -165,7 +192,6 @@ export default function HeroSection() {
             className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative text-left border border-gray-100 transform transition-all"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Botão Fechar (X) */}
             <button
               onClick={() => setIsPdfModalOpen(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors text-lg font-bold cursor-pointer"
@@ -174,7 +200,6 @@ export default function HeroSection() {
               ✕
             </button>
 
-            {/* Cabeçalho */}
             <div className="mb-4 pr-6">
               <span className="text-xs font-bold text-emerald-700 uppercase tracking-wider bg-emerald-50 px-2.5 py-1 rounded-md inline-block mb-2">
                 Demonstração
@@ -184,7 +209,6 @@ export default function HeroSection() {
               </h3>
             </div>
 
-            {/* Card Preview do PDF */}
             <div className="relative rounded-xl overflow-hidden border border-gray-200 bg-gray-100 shadow-inner group mb-6">
               <img
                 src="https://tse2.mm.bing.net/th/id/OIP.zCh1_E6tuDZCfbsOy1OeaQHaEm?r=0&pid=Api"
@@ -199,7 +223,6 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Link para o arquivo em /public */}
             <a
               href="/exemplo-laudo-tecnico.pdf"
               target="_blank"

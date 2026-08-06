@@ -1,6 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic';
+import Preloader from "@/components/Preloader";
 import ContactSection from "@/components/Contact";
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
@@ -19,6 +20,7 @@ const Interactive3DHistory = dynamic(
 export default function Home() {
   return (
     <>
+      <Preloader />
       <Navbar />
       <HeroSection />
       <VideoSection />
