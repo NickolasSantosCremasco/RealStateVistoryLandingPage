@@ -15,13 +15,17 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  // Variáveis de ambiente
+  const web3FormsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || '';
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '';
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      // Envia os dados para a API do Web3Forms com a sua Access Key gerada
+      // Disparo para o Web3Forms usando a variável de ambiente
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -29,7 +33,7 @@ export default function ContactSection() {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'be6d0547-7313-43a6-8d91-27cb2f205b43',
+          access_key: web3FormsKey,
           subject: `Novo Agendamento via Site: ${formData.nome} - ${formData.tipoVistoria}`,
           from_name: formData.nome,
           nome: formData.nome,
@@ -46,7 +50,7 @@ export default function ContactSection() {
       if (result.success) {
         setSubmitStatus('success');
 
-        // Formata a mensagem para redirecionamento no WhatsApp
+        // Redirecionamento para WhatsApp seguro
         const textoMensagem = 
           `*Novo Agendamento via Site* 🏢\n\n` +
           `*Nome:* ${formData.nome}\n` +
@@ -57,9 +61,8 @@ export default function ContactSection() {
           `*Mensagem:* ${formData.mensagem || 'Nenhuma mensagem informada'}`;
 
         const urlEncoded = encodeURIComponent(textoMensagem);
-        window.open(`https://wa.me/5511997069616?text=${urlEncoded}`, '_blank');
+        window.open(`https://wa.me/${whatsappNumber}?text=${urlEncoded}`, '_blank');
 
-        // Limpa os campos do formulário
         setFormData({
           nome: '',
           whatsapp: '',
@@ -108,7 +111,7 @@ export default function ContactSection() {
               <div className="space-y-6">
                 {/* WhatsApp */}
                 <a 
-                  href="https://wa.me/5511997069616" 
+                  href={`https://wa.me/${whatsappNumber}`} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group cursor-pointer"
@@ -239,10 +242,10 @@ export default function ContactSection() {
                     onChange={(e) => setFormData({ ...formData, tipoImovel: e.target.value })}
                   >
                     <option value="" disabled hidden>Selecione</option>
-                    <option value="Studio / Apartamento Compacto">Studio / Apartamento Compacto</option>
+                    <option value="Studio / Kitnet / Compacto">Studio / Kitnet / Compacto</option>
                     <option value="Apartamento Padrão">Apartamento Padrão</option>
                     <option value="Casa / Sobrado">Casa / Sobrado</option>
-                    
+                    <option value="Sala / Salão Comercial">Sala / Salão Comercial</option>
                   </select>
                 </div>
                 <div>
@@ -256,9 +259,10 @@ export default function ContactSection() {
                     onChange={(e) => setFormData({ ...formData, tipoVistoria: e.target.value })}
                   >
                     <option value="" disabled hidden>Selecione</option>
-                    <option value="Recebimento de Chaves (Imóvel Novo)">Recebimento de Chaves (Imóvel Novo)</option>
-                    <option value="Entrada / Saída de Locação">Entrada / Saída de Locação</option>
-                    <option value="Outro / Diagnóstico Específico">Outro / Digite na Caixa de Mensagem</option>
+                    <option value="Vistoria de Entrada (Início de Aluguel)">Vistoria de Entrada (Início de Aluguel)</option>
+                    <option value="Vistoria de Saída (Devolução do Imóvel)">Vistoria de Saída (Devolução do Imóvel)</option>
+                    <option value="Relatório Fotográfico de Conservação">Relatório Fotográfico de Conservação</option>
+                    <option value="Outro / Digite na Caixa de Mensagem">Outro / Digite na Caixa de Mensagem</option>
                   </select>
                 </div>
               </div>
@@ -306,4 +310,4 @@ export default function ContactSection() {
       </div>
     </section>
   );
-}   
+}
