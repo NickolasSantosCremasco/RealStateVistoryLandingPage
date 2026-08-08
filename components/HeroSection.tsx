@@ -16,61 +16,39 @@ export default function HeroSection() {
   const countRef = useRef<HTMLSpanElement>(null);
 
   useGSAP(() => {
-    // Função com todas as animações GSAP do Hero
-    const startHeroAnimations = () => {
-      const textToType = "VISTORIAS TÉCNICAS DE ALTA PRECISÃO EM IMÓVEIS";
+    const textToType = "VISTORIAS TÉCNICAS DE ALTA PRECISÃO EM IMÓVEIS";
 
-      // Garante que o título inicie limpo para a digitação
-      if (titleRef.current) titleRef.current.textContent = "";
+    // Garante que o título inicie limpo para a digitação
+    if (titleRef.current) titleRef.current.textContent = "";
 
-      // Digitação do título
-      gsap.to(titleRef.current, {
-        duration: 2.5,
-        text: textToType,
-        ease: 'none',
-      });
+    // Animação de digitação imediata
+    gsap.to(titleRef.current, {
+      duration: 2,
+      text: textToType,
+      ease: 'none',
+    });
 
-      // Cursor piscando
-      gsap.to(cursorRef.current, {
-        opacity: 0,
-        repeat: -1,
-        yoyo: true,
-        duration: 0.5,
-        ease: 'power2.inOut',
-      });
+    // Cursor piscando
+    gsap.to(cursorRef.current, {
+      opacity: 0,
+      repeat: -1,
+      yoyo: true,
+      duration: 0.5,
+      ease: 'power2.inOut',
+    });
 
-      // Contador dinâmico até 3000
-      const counterObj = { value: 0 };
-      gsap.to(counterObj, {
-        value: 3000,
-        duration: 1.8,
-        ease: 'power2.out',
-        onUpdate: () => {
-          if (countRef.current) {
-            countRef.current.textContent = `+${Math.floor(counterObj.value)}`;
-          }
-        },
-      });
-    };
-
-    // Handler que escuta o término do Preloader
-    const handleLoaderComplete = () => {
-      startHeroAnimations();
-    };
-
-    window.addEventListener('loaderComplete', handleLoaderComplete);
-
-    // Fallback: caso o evento já tenha passado antes do listener (ex: carregamento instantâneo via cache)
-    const fallbackTimer = setTimeout(() => {
-      if (titleRef.current && titleRef.current.textContent === "") {
-        startHeroAnimations();
-      }
-    }, 2500);
-
-    return () => {
-      window.removeEventListener('loaderComplete', handleLoaderComplete);
-      clearTimeout(fallbackTimer);
-    };
+    // Contador dinâmico até +3000
+    const counterObj = { value: 0 };
+    gsap.to(counterObj, {
+      value: 3000,
+      duration: 1.8,
+      ease: 'power2.out',
+      onUpdate: () => {
+        if (countRef.current) {
+          countRef.current.textContent = `+${Math.floor(counterObj.value)}`;
+        }
+      },
+    });
   }, { scope: containerRef });
 
   return (
@@ -134,7 +112,6 @@ export default function HeroSection() {
               <span className="text-xs bg-white border border-gray-200 rounded px-2.5 py-1 text-gray-600">
                 Residencial
               </span>
-             
             </div>
           </div>
 
