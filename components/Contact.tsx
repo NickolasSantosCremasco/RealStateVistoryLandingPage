@@ -242,8 +242,7 @@ export default function ContactSection() {
                     <option value="Studio / Apartamento Compacto">Studio / Apartamento Compacto</option>
                     <option value="Apartamento Padrão">Apartamento Padrão</option>
                     <option value="Casa / Sobrado">Casa / Sobrado</option>
-                    <option value="Comercial / Galpão">Comercial / Galpão</option>
-                    <option value="Empreendimento / Construtora">Empreendimento / Construtora</option>
+                    
                   </select>
                 </div>
                 <div>
@@ -259,8 +258,7 @@ export default function ContactSection() {
                     <option value="" disabled hidden>Selecione</option>
                     <option value="Recebimento de Chaves (Imóvel Novo)">Recebimento de Chaves (Imóvel Novo)</option>
                     <option value="Entrada / Saída de Locação">Entrada / Saída de Locação</option>
-                    <option value="Vistoria Cautelar de Vizinhança">Vistoria Cautelar de Vizinhança</option>
-                    <option value="Outro / Diagnóstico Específico">Outro / Diagnóstico Específico</option>
+                    <option value="Outro / Diagnóstico Específico">Outro / Digite na Caixa de Mensagem</option>
                   </select>
                 </div>
               </div>
