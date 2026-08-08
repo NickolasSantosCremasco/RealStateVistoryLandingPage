@@ -12,21 +12,71 @@ export default function ContactSection() {
     mensagem: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
 
-    // Monta o texto formatado para envio direto ao WhatsApp
-    const textoMensagem = 
-      `*Novo Agendamento via Site* 🏢\n\n` +
-      `*Nome:* ${formData.nome}\n` +
-      `*WhatsApp:* ${formData.whatsapp}\n` +
-      `*E-mail:* ${formData.email}\n` +
-      `*Tipo de Imóvel:* ${formData.tipoImovel}\n` +
-      `*Tipo de Vistoria:* ${formData.tipoVistoria}\n` +
-      `*Mensagem:* ${formData.mensagem || 'Nenhuma mensagem informada'}`;
+    try {
+      // Send message to Web3Forms endpoint for email dispatch
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'SEU_ACCESS_KEY_AQUI', // Obtenha gratuitamente em https://web3forms.com
+          subject: `Novo Agendamento: ${formData.nome} - ${formData.tipoVistoria}`,
+          from_name: formData.nome,
+          to_email: 'douglasgc@ymail.com',
+          nome: formData.nome,
+          whatsapp: formData.whatsapp,
+          email: formData.email,
+          tipo_imovel: formData.tipoImovel,
+          tipo_vistoria: formData.tipoVistoria,
+          mensagem: formData.mensagem || 'Nenhuma mensagem informada',
+        }),
+      });
 
-    const urlEncoded = encodeURIComponent(textoMensagem);
-    window.open(`https://wa.me/5511997069616?text=${urlEncoded}`, '_blank');
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+
+        // Formata mensagem para WhatsApp e abre nova aba
+        const textoMensagem = 
+          `*Novo Agendamento via Site* 🏢\n\n` +
+          `*Nome:* ${formData.nome}\n` +
+          `*WhatsApp:* ${formData.whatsapp}\n` +
+          `*E-mail:* ${formData.email}\n` +
+          `*Tipo de Imóvel:* ${formData.tipoImovel}\n` +
+          `*Tipo de Vistoria:* ${formData.tipoVistoria}\n` +
+          `*Mensagem:* ${formData.mensagem || 'Nenhuma mensagem informada'}`;
+
+        const urlEncoded = encodeURIComponent(textoMensagem);
+        window.open(`https://wa.me/5511997069616?text=${urlEncoded}`, '_blank');
+
+        // Limpa o formulário
+        setFormData({
+          nome: '',
+          whatsapp: '',
+          email: '',
+          tipoImovel: '',
+          tipoVistoria: '',
+          mensagem: '',
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -230,12 +280,26 @@ export default function ContactSection() {
                 ></textarea>
               </div>
 
-              {/* Botão de Envio Verde Neon / Mint */}
+              {/* Status de Envio */}
+              {submitStatus === 'success' && (
+                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs font-semibold">
+                  ✓ Solicitação enviada com sucesso! Abrindo atendimento no WhatsApp...
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-xs font-semibold">
+                  ✕ Ocorreu um erro ao enviar o e-mail. Tente enviar diretamente pelo WhatsApp.
+                </div>
+              )}
+
+              {/* Botão de Envio */}
               <button
                 type="submit"
-                className="w-full bg-[#00e699] hover:bg-[#00cc88] text-[#023b47] font-extrabold uppercase tracking-wider py-4 px-6 rounded-xl transition-all duration-200 shadow-md shadow-emerald-500/10 text-sm cursor-pointer"
+                disabled={isSubmitting}
+                className="w-full bg-[#00e699] hover:bg-[#00cc88] text-[#023b47] font-extrabold uppercase tracking-wider py-4 px-6 rounded-xl transition-all duration-200 shadow-md shadow-emerald-500/10 text-sm cursor-pointer disabled:opacity-50"
               >
-                Solicitar Agendamento
+                {isSubmitting ? 'Enviando...' : 'Solicitar Agendamento'}
               </button>
             </form>
           </div>

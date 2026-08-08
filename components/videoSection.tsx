@@ -17,10 +17,10 @@ export default function VideoSection({
         
         {/* Título da Seção */}
         <span className="text-xs font-bold text-[#024a59] uppercase tracking-wider bg-[#024a59]/10 px-3 py-1 rounded-full inline-block mb-3">
-          Demonstração na Prática
+          Automatizando seu Laudo
         </span>
         <h2 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight mb-8">
-          Como Funciona Nosso Processo de Vistoria
+          Laudos com auxílio de inteligência Artificial
         </h2>
 
         {/* Card do Player de Vídeo com Glassmorphism */}
@@ -38,13 +38,6 @@ export default function VideoSection({
             
             <div className="bg-white/20 backdrop-blur-md border border-white/40 rounded-2xl p-6 sm:p-10 max-w-lg w-full text-center shadow-xl transition-all duration-300 group-hover:bg-white/25 group-hover:scale-102">
               
-              <h3 className="text-xl sm:text-2xl font-black text-white tracking-wide mb-2 drop-shadow-sm">
-                Laudos com Inteligência Artificial
-              </h3>
-              
-              <p className="text-xs sm:text-sm text-white/90 mb-6 font-medium max-w-xs mx-auto drop-shadow-sm">
-                Veja o vídeo informativo
-              </p>
 
               {/* Botão de Play com Animação de Pulso */}
               <button
