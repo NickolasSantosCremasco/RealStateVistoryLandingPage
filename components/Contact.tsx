@@ -21,7 +21,7 @@ export default function ContactSection() {
     setSubmitStatus('idle');
 
     try {
-      // Send message to Web3Forms endpoint for email dispatch
+      // Envia os dados para a API do Web3Forms com a sua Access Key gerada
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -29,10 +29,9 @@ export default function ContactSection() {
           Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'SEU_ACCESS_KEY_AQUI', // Obtenha gratuitamente em https://web3forms.com
-          subject: `Novo Agendamento: ${formData.nome} - ${formData.tipoVistoria}`,
+          access_key: 'be6d0547-7313-43a6-8d91-27cb2f205b43',
+          subject: `Novo Agendamento via Site: ${formData.nome} - ${formData.tipoVistoria}`,
           from_name: formData.nome,
-          to_email: 'douglasgc@ymail.com',
           nome: formData.nome,
           whatsapp: formData.whatsapp,
           email: formData.email,
@@ -47,7 +46,7 @@ export default function ContactSection() {
       if (result.success) {
         setSubmitStatus('success');
 
-        // Formata mensagem para WhatsApp e abre nova aba
+        // Formata a mensagem para redirecionamento no WhatsApp
         const textoMensagem = 
           `*Novo Agendamento via Site* 🏢\n\n` +
           `*Nome:* ${formData.nome}\n` +
@@ -60,7 +59,7 @@ export default function ContactSection() {
         const urlEncoded = encodeURIComponent(textoMensagem);
         window.open(`https://wa.me/5511997069616?text=${urlEncoded}`, '_blank');
 
-        // Limpa o formulário
+        // Limpa os campos do formulário
         setFormData({
           nome: '',
           whatsapp: '',
@@ -289,7 +288,7 @@ export default function ContactSection() {
 
               {submitStatus === 'error' && (
                 <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-xs font-semibold">
-                  ✕ Ocorreu um erro ao enviar o e-mail. Tente enviar diretamente pelo WhatsApp.
+                  ✕ Ocorreu um erro ao enviar a mensagem. Tente enviar diretamente pelo WhatsApp.
                 </div>
               )}
 
@@ -309,4 +308,4 @@ export default function ContactSection() {
       </div>
     </section>
   );
-}
+}   
