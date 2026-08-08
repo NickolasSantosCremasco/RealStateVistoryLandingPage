@@ -13,7 +13,7 @@ export default function Footer() {
         {/* Grid Principal do Rodapé */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800/80">
           
-          {/* Coluna 1: Logo e Sobre */}
+          {/* Coluna 1: Logo, Texto Atualizado e CNPJ */}
           <div className="space-y-4">
             <Link href="/" className="block w-28">
               <Image 
@@ -24,12 +24,21 @@ export default function Footer() {
                 className="rounded-2xl object-contain"
               />
             </Link>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Laudos técnicos e vistorias imobiliárias de alta precisão. Garantia técnica e jurídica para compradores, proprietários e construtoras.
+
+            {/* Texto Novo Solicitado pelo Cliente */}
+            <p className="text-xs text-slate-300 font-medium leading-relaxed">
+              Laudos técnicos para proprietários e inquilinos.
             </p>
+
+            {/* Inclusão do CNPJ */}
+            <div className="inline-block bg-slate-800/80 border border-slate-700/60 rounded-lg px-2.5 py-1">
+              <span className="text-[11px] font-mono font-semibold text-emerald-400">
+                CNPJ 36.793.946.0001/08
+              </span>
+            </div>
           </div>
 
-          {/* Coluna 2: Navegação */}
+          {/* Coluna 2: Navegação Atualizada */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
               Navegação
@@ -46,8 +55,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#anatomia" className="hover:text-[#00e699] transition-colors">
-                  Anatomia do Laudo
+                <Link href="#sobre" className="hover:text-[#00e699] transition-colors">
+                  Nossa História
                 </Link>
               </li>
               <li>
@@ -102,13 +111,13 @@ export default function Footer() {
 
         </div>
 
-        {/* Linha Inferior: Copyright e Créditos com UX de Botão/Email */}
+        {/* Linha Inferior: Copyright com CNPJ e Créditos */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 gap-4 text-center md:text-left">
           <p>
-            © {currentYear} Dougnickvistorias. Todos os direitos reservados.
+            © {currentYear} Dougnickvistorias. Todos os direitos reservados. • CNPJ 36.793.946.0001/08
           </p>
 
-          {/* Botão de Crédito com Ação de E-mail Explícita */}
+          {/* Botão de Crédito */}
           <div className="flex items-center gap-2">
             <span className="text-slate-400">Desenvolvido por:</span>
             <a 
