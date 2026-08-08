@@ -51,14 +51,14 @@ export default function AboutSection() {
               </div>
 
               {/* Seção Empresa Parceira com Imagem / Logo do QuintoAndar */}
-              <div className="bg-[#023b47] text-white p-4 rounded-xl border border-slate-700/50 flex items-center justify-between">
+              <div className="bg-[#023b47] text-white pt-3 pb-3 pr-3 rounded-xl border border-slate-700/50 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white p-1.5 flex items-center justify-center shrink-0">
+                  <div className=" h-10 rounded-4xl w-30 flex items-center justify-center shrink-0">
                     {/* Substitua a URL abaixo pela imagem/logo oficial do QuintoAndar se preferir */}
                     <img 
-                      src="https://tse1.mm.bing.net/th/id/OIP.y7XmKOnI1QYpIeX9G43ZqwHaHa?rs=1&pid=ImgDetMain" 
+                      src="/img/QuintoAndar.jpeg" 
                       alt="Logo Grupo QuintoAndar" 
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-contain rounded-xl"
                     />
                   </div>
                   <div>
