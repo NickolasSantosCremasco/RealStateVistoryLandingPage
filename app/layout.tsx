@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 
-const siteUrl = 'https://www.dougnickvistorias.com.br'; // Substitua pelo domínio oficial do cliente
+const siteUrl = 'https://www.dougnickvistorias.com.br';
 
 export const viewport: Viewport = {
   themeColor: '#023b47',
@@ -75,6 +76,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Puxa estritamente da variável de ambiente .env.local
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
   // Schema JSON-LD para Negócio Local (LocalBusiness) no Google
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -96,7 +100,7 @@ export default function RootLayout({
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: -23.518, // Coordenadas aproximadas de São Paulo
+      latitude: -23.518,
       longitude: -46.425,
     },
     areaServed: {
@@ -117,6 +121,9 @@ export default function RootLayout({
       </head>
       <body className="antialiased text-slate-800 bg-white">
         {children}
+
+        {/* Só renderiza se a variável de ambiente existir */}
+        {gaId && <GoogleAnalytics gaId={gaId} />}
       </body>
     </html>
   );
