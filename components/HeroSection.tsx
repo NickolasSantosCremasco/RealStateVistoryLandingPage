@@ -40,7 +40,7 @@ export default function HeroSection() {
     // Contador dinâmico até +3000
     const counterObj = { value: 0 };
     gsap.to(counterObj, {
-      value: 3000,
+      value: 4000,
       duration: 1.8,
       ease: 'power2.out',
       onUpdate: () => {
