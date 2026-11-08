@@ -20,6 +20,14 @@ const laudos = [
     highlights: ['397 Fotos', 'Mobiliado', '73.00m²'],
   },
   {
+    id: 'monza',
+    title: 'Edifício Monza',
+    address: 'Rua da Consolação, 2796, Ap 104 – Cerqueira César – São Paulo/SP',
+    photos: 460,
+    file: '/laudos/vistoria-44-entrada-edificio-monza-pPfYO_cERHM9_x6Yv67x.pdf',
+    highlights: ['460 Fotos', 'Super mobiliado', '140.00m²'],
+  },
+  {
     id: 'vilamadalena',
     title: 'Sobrado Vila Madalena',
     address: 'Rua Dr. Baeta Neves, 73 - Vila Madalena, SP',
@@ -27,14 +35,7 @@ const laudos = [
     file: '/laudos/vistoria-21-entrada-sobrado-vila-madalena-UNfIq_O6iPm1_PM879LG.pdf',
     highlights: ['274 Fotos', 'Semi Mobiliado', '90.00m²'],
   },
-  {
-    id: 'mariahelena',
-    title: 'Edifício Maria Helena',
-    address: 'Rua Jaguaribe, 66 - Santa Cecília, SP',
-    photos: 149,
-    file: '/laudos/vistoria-22-entrada-edificio-maria-helena-7EYJc_R5s9PY_TS7btA5.pdf',
-    highlights: ['149 Fotos', 'Mobiliado', '58.00m²'],
-  },
+
 ];
 export default function ReportsShowcase() {
   const [activeReport, setActiveReport] = useState(laudos[0]);
