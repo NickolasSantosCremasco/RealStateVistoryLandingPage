@@ -15,7 +15,7 @@ export default function PricingSection() {
       ),
       title: 'COMPACTO & STUDIO',
       pricePrefix: '',
-      price: 'R$ 199',
+      price: 'R$ 229',
 
       features: [
         'Inspeção de até 45m²',
@@ -37,7 +37,7 @@ export default function PricingSection() {
       ),
       title: 'PADRÃO / INTERMEDIÁRIO',
       pricePrefix: '',
-      price: 'R$ 299',
+      price: 'R$ 329',
 
       features: [
         'Inspeção de 46m² a 100m²',
@@ -60,7 +60,7 @@ export default function PricingSection() {
       ),
       title: 'ESPECIAL & ALTO PADRÃO',
       pricePrefix: 'A partir de ',
-      price: 'R$ 399',
+      price: 'R$ 429',
      
       features: [
         'Inspeção acima de 100m²',
